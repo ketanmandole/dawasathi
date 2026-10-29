@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#1456d9">
+  <meta name="description" content="Organize household medicine batches and keep expiry dates in view.">
+  <title>Dawa Saathi — Medicine tracker</title>
+  <link rel="stylesheet" href="assets/style.css">
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="assets/supabase-config.js"></script>
+  <script src="assets/app.js" defer></script>
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="#" data-action="home"><span class="brand-mark">＋</span><span>Dawa Saathi</span></a>
+    <div class="top-actions"><span id="profile-label" class="storage-label"></span><button class="button button-quiet" id="logout" type="button" hidden>Lock</button><button class="button button-primary" id="new-batch" type="button" hidden>＋ <span>New batch</span></button></div>
+  </header>
+  <main id="app" class="page" aria-live="polite"><div class="loading">Loading Dawa Saathi…</div></main>
+  <dialog id="editor" class="dialog"><form id="editor-form" method="dialog"></form></dialog>
+  <dialog id="pdf-viewer" class="pdf-viewer"><div class="viewer-toolbar"><strong id="viewer-title">Prescription</strong><button class="button button-quiet" id="close-viewer" type="button">Close</button></div><iframe id="pdf-frame" title="Prescription PDF preview"></iframe></dialog>
+  <dialog id="camera-dialog" class="camera-dialog"><div class="camera-header"><div><p class="eyebrow">PRESCRIPTION SCAN</p><h2>Take a clear photo</h2></div><button class="icon-delete" id="camera-close" type="button" aria-label="Close camera">×</button></div><div class="camera-stage"><video id="camera-video" autoplay playsinline></video><div id="camera-placeholder" class="camera-placeholder">Starting camera…</div></div><p id="camera-error" class="camera-error" role="alert"></p><div class="camera-actions"><button class="button button-secondary" id="camera-choose-file" type="button">Choose a photo instead</button><button class="button button-primary" id="camera-capture" type="button" disabled>Capture photo</button></div></dialog>
+  <input id="prescription-file" type="file" accept="application/pdf,image/*" hidden>
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+</body>
+</html>
